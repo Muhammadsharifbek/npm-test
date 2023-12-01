@@ -1,19 +1,15 @@
-import "../scss/main.scss";
+import "../css/style.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./modules/axios";
 import axios from "axios";
 import upcomingMovies from "./modules/upcomingMovies";
+import { renderMovies } from "./modules/render";
 
-const getUpcomingMovies = async () => {
-  const { data } = await axios.get("/movie/upcoming", {
-    params: {
-      page: 2,
-    },
-  });
-  upcomingMovies(data.results);
-};
+const params = { params: { page: 2 } };
 
-getUpcomingMovies();
-
-console.log(1);
+upcomingMovies("/movie/upcoming", params)
+  .then((data) => {
+    renderMovies(data.results, document.querySelector("[data-upcoming]"));
+  })
+  .catch((err) => console.log(err));

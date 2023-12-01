@@ -1,12 +1,12 @@
 const calcVoteAverage = (rate) => {
   if (rate > 7) {
-    return green;
+    return "green";
   } else if (rate < 7 && rate >= 6) {
-    return yellow;
+    return "yellow";
   } else if (rate < 6 && rate >= 5) {
-    return orange;
+    return "orange";
   } else if (rate < 5) {
-    return crimson;
+    return "crimson";
   }
 };
 
